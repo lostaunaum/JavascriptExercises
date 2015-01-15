@@ -200,7 +200,95 @@ function say (word) {
 	}
 }
 
+////////////////////////////////////////////////////////
 
+
+// 12: create an inheritance chain : Shape -> Rectangle -> Square
+// or Square inherits from Rectangle and Rectangle inherits from Shape
+
+function Shape () {
+    this.name = '';
+    this.setName = function (name) {
+        this.name = name;    
+    }
+}
+
+function Rectangle (x, y) {
+    //fill in code here
+}
+
+function Square (x) {
+    //fill in code here
+}
+
+var rectangle;
+var square;
+
+// fill in code here 
+
+rectangle.setName('rectangle');
+square.setName('square');
+
+// satisfy these requirements
+console.log('\n\n\n\n\n\n\n');
+console.log(rectangle.getX() === 2 ? 'yes' : 'NO!')
+console.log(rectangle.getY() === 4 ? 'yes' : 'NO!')
+console.log(square.getX() === 10 ? 'yes' : 'NO!')
+console.log(square.getY() === 10 ? 'yes' : 'NO!')
+console.log(rectangle.name === 'rectangle' ? 'yes' : 'NO!')
+console.log(square.name === 'square' ? 'yes' : 'NO!')
+
+
+//Answer:
+
+function Shape () {
+    this.name = '';
+    this.setName = function (name) {
+        this.name = name; 
+    };   
+}
+
+
+function Rectangle (x, y) {
+  this.name = 'rectangle';
+  this.x = x;
+  this.y = y;
+  this.getX = function () {
+    return this.x
+  };
+  this.getY = function () {
+    return this.y
+  };
+}
+
+Rectangle.prototype = new Shape();
+
+function Square (x) {
+  this.x = x;
+  this.name = 'square';
+  this.getY = function () {
+    return this.x
+  }
+}
+
+Square.prototype = new Rectangle();
+
+var rectangle = new Rectangle();
+var square = new Square();
+
+// fill in code here 
+
+rectangle.setName('rectangle');
+square.setName('square');
+
+// satisfy these requirements
+console.log('\n\n\n\n\n\n\n');
+console.log(rectangle.getX() === 2 ? 'yes' : 'NO!')
+console.log(rectangle.getY() === 4 ? 'yes' : 'NO!')
+console.log(square.getX() === 10 ? 'yes' : 'NO!')
+console.log(square.getY() === 10 ? 'yes' : 'NO!')
+console.log(rectangle.name === 'rectangle' ? 'yes' : 'NO!')
+console.log(square.name === 'square' ? 'yes' : 'NO!')
 
 
 
